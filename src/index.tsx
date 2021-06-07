@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { Router } from "react-router-dom";
+import history from './helpers/history';
+import "./i18n"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Suspense fallback={"loading"}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Suspense>,
   document.getElementById('root')
 );
 
