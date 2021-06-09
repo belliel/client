@@ -74,7 +74,7 @@ const Register = () => {
             type="password"
             placeholder={t("password_confirm")}
         />
-        <div className="w-4/6 sm:w-3/12 flex flex-row flex-wrap justify-between items-center">
+        <div className="w-4/6 sm:w-3/12 space-y-2 flex flex-row flex-wrap justify-between items-center">
             <button
                 className="dark:bg-pink-800 dark:text-gray-200 text-blue-500 bg-blue-100 hover:bg-blue-200 font-semibold rounded shadow dark:border-pink-900 border-transparent border-2 focus:outline-none outline-none p-2"
             >

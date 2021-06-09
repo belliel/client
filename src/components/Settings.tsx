@@ -46,10 +46,10 @@ const Settings = () => {
                 onChange={e => i18n.changeLanguage(e.target.value)}
                 className="shadow rounded bg-transparent dark:bg-gray-400 bg-blue-200 p-1 outline-none font-semibold">
                 {
-                    locale ? <option className="text-gray-700" value={locale.value}>{locale.naming}</option> : <></>
+                    locale ? <option className="text-gray-700" value={locale.value}>{t(locale.naming)}</option> : <></>
                 }
                 {
-                    locales.filter(l => l.value !== locale?.value).map(l => <option className="text-gray-700" key={l.value} value={l.value}>{l.naming}</option>)
+                    locales.filter(l => l.value !== locale?.value).map(l => <option className="text-gray-700" key={l.value} value={l.value}>{t(l.naming)}</option>)
                 }
             </select>
         </div>

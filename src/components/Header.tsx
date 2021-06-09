@@ -32,7 +32,7 @@ const Header = () => {
             
             {
                 inSettings ? <Link 
-                    className={`w-1/3 h-full flex-col justify-center items-center flex`} to="/settings"
+                    className={`w-1/3 h-full flex-col justify-center items-center flex text-center`} to="/settings"
                 >
                     ⚙️ {t("settings")}
                 </Link> : <button 
@@ -43,12 +43,12 @@ const Header = () => {
                 </button>
             }
 
-            <Link className={`w-1/3 h-full flex-col justify-center items-center ${inOtherMenu && inSettings ? 'flex' : 'hidden'}`} to="/">
+            <Link className={`w-1/3 h-full flex-col justify-center items-center text-center ${inOtherMenu && inSettings ? 'flex' : 'hidden'}`} to="/">
                 🏠 {t("home")}
             </Link>
 
             <button 
-                className="w-1/3 h-full focus:outline-none outline-none"
+                className="w-1/3 h-full focus:outline-none outline-none  text-center"
                 onClick={e => toggleTheme()}
                 type="button">
                 <span>{themeIcon}</span>
