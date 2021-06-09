@@ -32,6 +32,7 @@ export default function useFindUser() {
                 })
                 .catch((err) => {
                     console.error(err);
+                    setUser(null)
                     setLoading(false);
                 });
         }

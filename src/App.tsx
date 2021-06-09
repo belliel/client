@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { useTranslation } from "react-i18next";
-import { Switch } from "react-router";
+import { Redirect, Switch } from "react-router";
 import { Route } from "react-router-dom";
 
 import Login from "./components/Login";
@@ -18,7 +18,12 @@ import { ThemeContext } from "./hooks/ThemeContext";
 import { AuthContext } from "./hooks/AuthContext";
 import useFindAuth from "./hooks/useFindAuth";
 import { AccountsContext } from "./hooks/AccountsContext";
-import useAccounts from "./hooks/useFindAccounts";
+import useFindAccounts from "./hooks/useFindAccounts";
+import NewAccount from "./components/NewAccount";
+import AccountComponent from "./components/Account";
+import Transfer from "./components/Transfer";
+import Withdraw from "./components/Withdraw";
+import Deposit from "./components/Deposit";
 
 NProgress.configure({
 	minimum: 0.1,
@@ -30,7 +35,7 @@ NProgress.configure({
 const App = () => {
 	const { auth, setAuth } = useFindAuth()
 	const { user, setUser, isLoading: userIsLoading } = useFindUser();
-	const { accounts, setAccounts, isLoading: accountsIsLoading } = useAccounts()
+	const { accounts, setAccounts, isLoading: accountsIsLoading } = useFindAccounts()
 	const { theme, themeIcon, setTheme, toggleTheme } = useTheme()
 
 	const canvasElements = document.getElementsByTagName("canvas")
@@ -65,23 +70,56 @@ const App = () => {
 							<Route path="/settings">
 								<Settings />
 							</Route>
-							{
-								user ? <>
-									<Route exact path="/">
-										<Dashboard />
-									</Route>
-									<Route path="/account/new">
+							
+							<Route exact path="/account">
+								{
+									user 
+										? <NewAccount /> 
+										: <Redirect to="/" />
+								}
+							</Route>
 
-									</Route>
-								</> : <>
-									<Route exact path="/">
-										<Login />
-									</Route>
-									<Route path="/register">
-										<Register />
-									</Route>
-								</>
-							}
+							<Route exact path="/account/:id">
+								<AccountComponent /> 
+
+								{/* {
+									user 
+										? <AccountComponent /> 
+										: <Redirect to="/" />
+								} */}
+							</Route>
+
+							<Route exact path="/transfer/:id">
+								<Transfer />
+							</Route>
+
+							<Route exact path="/withdraw/:id">
+								<Withdraw />
+							</Route>
+
+							<Route exact path="/deposit/:id">
+								<Deposit />
+							</Route>
+
+							<Route path="/register">
+								{
+									user 
+										? <Redirect to="/" />
+										: <Register /> 
+								}
+							</Route>
+
+							<Route exact path="/">
+								{
+									user 
+										? <Dashboard /> 
+										: <Login />
+								}
+							</Route>
+
+							<Route path="*">
+								<Redirect to="/" />
+							</Route>
 						</Switch>
 					</div>
 				</ThemeContext.Provider>

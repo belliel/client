@@ -30,7 +30,7 @@ export default function useAuth() {
                 history.push(decodeURIComponent(redirect));
             }
         })
-        .catch(err => setError(err.response.error || "error"))
+        .catch(err => setError(err.response?.error || err.message))
     }
 
     const logOut = () => {
@@ -60,7 +60,7 @@ export default function useAuth() {
             } 
         })
         .catch(err => {
-            setError(err.response.error || "error")
+            setError(err.response?.error || err.message)
         })
     }
 
@@ -80,7 +80,7 @@ export default function useAuth() {
             } 
         })
         .catch(err => {
-            setError(err.response.error || "error")
+            setError(err.response?.error || err.message)
         })
     }
 
@@ -93,7 +93,7 @@ export default function useAuth() {
         )
         .then(res => {})
         .catch(err => {
-            setError(err.response.error || "error")
+            setError(err.response?.error || err.message)
         })
     }
 
@@ -113,7 +113,7 @@ export default function useAuth() {
             } 
         })
         .catch(err => {
-            setError(err.response.error || "error")
+            setError(err.response?.error || err.message)
         })
     }
 

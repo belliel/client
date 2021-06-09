@@ -22,7 +22,7 @@ const Login = () => {
         })
     }
 
-    return <form onSubmit={formSubmit} className="flex flex-col h-5/6 justify-center items-center space-y-2">ЧЁ
+    return <form onSubmit={formSubmit} className="flex flex-col h-5/6 justify-center items-center space-y-2">
         <div onClick={toggleTheme} className="w-4/6 sm:w-3/12 dark:text-gray-200 text-center text-2xl sm:text-3xl font-semibold mb-5 space-x-2">
             <span>{t("login_text")}</span>
             <span>{themeIcon}</span>

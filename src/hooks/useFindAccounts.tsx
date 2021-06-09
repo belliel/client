@@ -4,7 +4,7 @@ import { accountListInput, API_URI } from "../utils/constants";
 import { Account } from "./AccountsContext"
 import { Auth } from "./AuthContext";
 
-export default function useAccounts() {
+export default function useFindAccounts() {
 
     const [accounts, setAccounts] = useState<Account[]>([])
     const [isLoading, setIsLoading] = useState(false)
@@ -32,14 +32,14 @@ export default function useAccounts() {
             })
             .then(res => {
                 if (Array.isArray(res.data))
-                    setAccounts(res.data as Account[])
+                    setAccounts([...(res.data as Account[])])
                 else
                     console.error("accounts response not array")
 
                 setIsLoading(false)
             })
             .catch(err => {
-                if ((err.response.error || "error") === "accounts not found") {
+                if ((err.response?.data?.error || err.message) === "accounts not found") {
                     console.info("no accounts")
                 }
 

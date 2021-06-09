@@ -29,3 +29,23 @@ export interface accountListInput {
     user_id: string,
 }
 
+export interface transferInput {
+    from_id: string
+    to_id: string
+    amount: number
+}
+
+export interface DepositWithdrawInput {
+    account_id: string,
+    amount: number,
+}
+
+export interface FindUserInput {
+    email: string
+    phone: string
+}
+
+export interface FindAccountsInput {
+    id: string
+    card_number: string
+}

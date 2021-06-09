@@ -32,7 +32,7 @@ const Settings = () => {
                 </div>        
         
                 <button 
-                    className="p-2 rounded shadow dark:bg-red-500 bg-red-300 text-white font-semibold"
+                    className="p-2 rounded shadow bg-red-300 text-white font-semibold"
                     onClick={e => logOut()}>
                     🚪 {t("logout")}
                 </button>
@@ -44,7 +44,7 @@ const Settings = () => {
             </span>
             <select
                 onChange={e => i18n.changeLanguage(e.target.value)}
-                className="bg-transparent outline-none font-semibold">
+                className="shadow rounded bg-transparent dark:bg-gray-400 bg-blue-200 p-1 outline-none font-semibold">
                 {
                     locale ? <option className="text-gray-700" value={locale.value}>{locale.naming}</option> : <></>
                 }
@@ -58,7 +58,7 @@ const Settings = () => {
                 {t("theme")} {themeIcon}
             </span>
             <button 
-                className="focus:outline-none outline-none font-semibold"
+                className="shadow rounded bg-transparent dark:bg-gray-400 bg-blue-200 py-1 px-4 focus:outline-none outline-none font-semibold"
                 onClick={e => toggleTheme()}    
             >
                 {t(theme as string)}

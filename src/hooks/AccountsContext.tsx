@@ -1,5 +1,4 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { User } from "./UserContext";
 
 export enum Currency {
     KZT,
@@ -13,7 +12,6 @@ export enum AccountType {
     Debit,
     Deposit,
 }
-
 
 export interface Account {
     id: string
@@ -31,6 +29,26 @@ export interface Account {
     deposit_cap: number
     deposit_end_date: number
     loan_cap: number
+}
+
+export const getZeroValueAccount = (): Account => {
+    return {
+        id: "",
+        user_id: "",
+        type: AccountType.Debit,
+        currency: Currency.KZT,
+        balance: 0,
+        number: "",
+        iban: "",
+        card_number: "",
+        card_type: "",
+        cvv: "",
+        created_at: 0,
+        expire_date: 5,
+        deposit_cap: 0,
+        deposit_end_date: 6,
+        loan_cap: 0,
+    }
 }
 
 export const AccountsContext = createContext<{
